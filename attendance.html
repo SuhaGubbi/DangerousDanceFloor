@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance - Dangerous Dance Floor</title>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase.js"></script>
+
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Base branding styles to match the index page design */
+        
+        body {
+            background-color: #0d0d0d !important;
+            color: #ffffff !important;
+            font-family: 'Times New Roman', Times, serif;
+            min-height: 100vh;
+        }
+        
+        .text-gold {
+            color: gold !important;
+        }
+        
+        .btn-gold {
+            background-color: #ffffff;
+            color: #000000;
+            font-weight: bold;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold:hover {
+            background-color: gold;
+            color: #000000;
+        }
+        /* Dark Card Container Blocks */
+        
+        .portal-card {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 8px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        /* Form Controls Custom Focus Overrides */
+        
+        .form-dark-control {
+            background-color: #222 !important;
+            border: 1px solid #333 !important;
+            color: #ffffff !important;
+            padding: 14px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            border-radius: 4px;
+        }
+        
+        .form-dark-control:focus {
+            border-color: gold !important;
+            box-shadow: none !important;
+        }
+        /* QR Scanner Frame Box */
+        
+        .qr-box {
+            width: 220px;
+            height: 220px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 3px solid gold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MAIN STRUCTURAL CONTAINER -->
+    <div class="container py-4" style="max-width: 1200px;">
+
+        <!-- BOOTSTRAP NAVBAR (Synchronized navigation layer) -->
+        <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-secondary border-opacity-25 pb-4 mb-5">
+            <div class="container-fluid p-0">
+                <!-- Logo Layout Area -->
+                <a class="navbar-brand text-uppercase fw-light fs-4 text-start m-0 text-white" href="#" style="letter-spacing: 2px;">
+                    Dangerous
+                    <span class="d-block text-gold fs-6" style="font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 1px;">DANCE FLOOR</span>
+                </a>
+
+                <!-- Mobile Navigation Toggle -->
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Responsive Menu Items -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <div class="navbar-nav align-items-center gap-2 gap-lg-3 my-3 my-lg-0" style="font-family: Arial, sans-serif; font-size: 14px;">
+                        <a class="nav-link text-white" href="index.html">Home</a>
+                        <a class="nav-link text-white" href="about.html">About Us</a>
+                        <a class="nav-link text-white" href="founder.html">Founder</a>
+                        <a class="nav-link text-white" href="instructor.html">Instructor</a>
+                        <a class="nav-link text-white" href="register.html">Student Registration</a>
+                        <a class="nav-link text-white" href="login.html">Founder Login</a>
+                        <a class="nav-link active text-gold" href="attendance.html">Attendance</a>
+                        <a class="nav-link text-white" href="fees.html">Fees Payment</a>
+                        <a class="nav-link text-white" href="map.html">Map Location</a>
+                        <a href="contact.html" class="btn btn-gold px-4 py-2 ms-lg-2">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- PAGE TITLE INTRO BLOCK -->
+        <div class="text-center mb-5 mx-auto" style="max-width: 700px;">
+            <h1 class="display-5 mb-2 fw-normal text-white" style="letter-spacing: 1px;">Class Attendance Portal</h1>
+            <p class="text-secondary fs-6 mb-0" style="font-family: Arial, sans-serif;">
+                Verify registration credentials and map logs into the secure dance database cluster.
+            </p>
+        </div>
+
+        <!-- PORTAL TWO-COLUMN INTERACTIVE CONTENT ROW -->
+        <div class="row g-4 justify-content-center">
+
+            <!-- LEFT PANEL: INPUT METRIC SUBMISSION BLOCK -->
+            <div class="col-12 col-lg-6">
+                <div class="portal-card p-4 p-sm-5 h-100">
+
+                    <div class="mb-4">
+                        <label for="studentName" class="form-label text-uppercase text-secondary small fw-bold" style="font-family: Arial, sans-serif; letter-spacing: 1px;">Student Name</label>
+                        <input type="text" id="studentName" class="form-control form-dark-control" placeholder="Enter Full Registered Name">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="phoneNo" class="form-label text-uppercase text-secondary small fw-bold" style="font-family: Arial, sans-serif; letter-spacing: 1px;">Phone Number</label>
+                        <input type="tel" id="phoneNo" class="form-control form-dark-control" placeholder="Enter Phone Number">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="classTimings" class="form-label text-uppercase text-secondary small fw-bold" style="font-family: Arial, sans-serif; letter-spacing: 1px;">Class Timings</label>
+                        <select id="classTimings" class="form-select form-dark-control">
+                            <option value="">Select Class Batch Slot</option>
+                            <option value="4:00 PM - 6:00 PM (Small Kids)">4:00 PM - 6:00 PM (Small Kids)</option>
+                            <option value="6:00 PM - 7:00 PM (Small Kids)">6:00 PM - 7:00 PM (Small Kids)</option>
+                            <option value="7:00 PM - 8:00 PM (Adult Batch)">7:00 PM - 8:00 PM (Adult Batch)</option>
+                            <option value="8:00 PM - 9:00 PM (Senior Batch)">8:00 PM - 9:00 PM (Senior Batch)</option>
+                            <option value="9:00 PM - 10:00 PM (Senior Batch)">9:00 PM - 10:00 PM (Senior Batch)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="statusSelect" class="form-label text-uppercase text-secondary small fw-bold" style="font-family: Arial, sans-serif; letter-spacing: 1px;">Attendance Status</label>
+                        <select id="statusSelect" class="form-select form-dark-control">
+                            <option value="Present">Present</option>
+                            <option value="Absent">Absent</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-gold btn-submit w-100 text-uppercase py-3 fw-bold tracking-wider mb-2" onclick="markAttendance()" style="font-family: Arial, sans-serif; font-size: 15px; letter-spacing: 1px;">Submit Log</button>
+
+                    <!-- DYNAMIC SYSTEM CALL FEEDBACK METRICS AREA -->
+                    <p id="output" class="text-center fw-bold fs-6 mb-0 mt-3" style="font-family: Arial, sans-serif; letter-spacing: 0.5px;"></p>
+                </div>
+            </div>
+
+            <!-- RIGHT PANEL: CHECK-IN SCANNER SYSTEM BLOCK -->
+            <div class="col-12 col-lg-6">
+                <div class="portal-card p-4 p-sm-5 text-center h-100 d-flex flex-column align-items-center justify-content-center" style="min-height: 440px;">
+                    <h2 class="h3 fw-normal mb-2 text-white" style="letter-spacing: 1px;">Scan to Check-In</h2>
+                    <p class="text-secondary mb-4 mx-auto" style="font-family: Arial, sans-serif; font-size: 14px; max-width: 380px;">
+                        Scan this QR code before entering the studio to open our Google Maps Jayanagar location.
+                    </p>
+
+                    <!-- Dynamic API QR Frame Display Box -->
+                    <div class="qr-box d-flex align-items-center justify-content-center">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.google.com/maps/search/?api=1%26query=Dangerous+Dance+Floor+Jayanagar+9th+Block+Bangalore" alt="Dangerous Dance Floor Map QR Code" class="img-fluid object-fit-contain w-100 h-100">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Firebase Script Function Logic Mapping -->
+    <script>
+        function markAttendance() {
+            const name = document.getElementById("studentName").value.trim();
+            const phone = document.getElementById("phoneNo").value.trim();
+            const timing = document.getElementById("classTimings").value;
+            const selectedStatus = document.getElementById("statusSelect").value;
+            const outputElement = document.getElementById("output");
+
+            // Input Validation Check
+            if (!name || !phone || !timing) {
+                outputElement.style.color = "#ff4444";
+                outputElement.innerHTML = "⚠ Error: All form fields must be completed.";
+                return;
+            }
+
+            // Target Database Path Lookup reference
+            db.ref("students/" + name).once("value", function(snapshot) {
+                if (snapshot.exists()) {
+                    // Updates name, phone number details, timing metrics, and attendance state
+                    db.ref("students/" + name).update({
+                        phoneNumber: phone,
+                        classTiming: timing,
+                        attendance: selectedStatus,
+                        lastUpdated: new Date().toISOString()
+                    }, function(error) {
+                        if (error) {
+                            outputElement.style.color = "#ff4444";
+                            outputElement.innerHTML = "Database Write Failed.";
+                        } else {
+                            outputElement.style.color = "gold";
+                            outputElement.innerHTML = `✔ ${selectedStatus} Logged Successfully!`;
+                        }
+                    });
+                } else {
+                    outputElement.style.color = "#ff4444";
+                    outputElement.innerHTML = "❌ Student Profile Record Not Found";
+                }
+            });
+        }
+    </script>
+
+    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

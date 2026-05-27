@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fees Payment - Dangerous Dance Floor</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase.js"></script>
+
+    <style>
+        body {
+            background-color: #0d0d0d !important;
+            color: #ffffff !important;
+            font-family: 'Times New Roman', Times, serif;
+            min-height: 100vh;
+        }
+        
+        .text-gold {
+            color: gold !important;
+        }
+        
+        .btn-gold {
+            background-color: gold;
+            color: #000000;
+            font-weight: bold;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        
+        .payment-card {
+            background-color: #1a1512;
+            border: 1px solid #3d3025;
+        }
+        
+        .accent-title {
+            color: #c4b5a7;
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+        
+        .panel-heading {
+            font-family: 'Georgia', serif;
+            color: #ffffff;
+        }
+        
+        .instruction-text {
+            color: #e3deda;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        /* White background layout wrapper for the QR image */
+        
+        .qr-scanner-frame {
+            background-color: #ffffff !important;
+            border: 4px solid gold;
+            max-width: 320px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .qr-scanner-frame:hover {
+            transform: scale(1.03);
+        }
+        
+        .qr-scanner-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .form-control {
+            background-color: #2b221a !important;
+            border: 1px solid #4e3e30 !important;
+            color: #ffffff !important;
+            border-radius: 4px;
+            padding: 12px 15px;
+        }
+        
+        .form-control::placeholder {
+            color: #705f52;
+        }
+        
+        .form-control:focus {
+            outline: none !important;
+            border-color: gold !important;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.15) !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-4" style="max-width: 1200px;">
+
+        <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-secondary border-opacity-25 pb-4 mb-5">
+            <div class="container-fluid p-0">
+                <a class="navbar-brand text-uppercase fw-light fs-4 text-start m-0 text-white" href="#" style="letter-spacing: 2px;">
+                    Dangerous
+                    <span class="d-block text-gold fs-6" style="font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 1px;">DANCE FLOOR</span>
+                </a>
+
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <div class="navbar-nav align-items-center gap-2 gap-lg-3 my-3 my-lg-0" style="font-family: Arial, sans-serif; font-size: 14px;">
+                        <a class="nav-link text-white" href="index.html">Home</a>
+                        <a class="nav-link text-white" href="about.html">About Us</a>
+                        <a class="nav-link text-white" href="founder.html">Founder</a>
+                        <a class="nav-link text-white" href="instructor.html">Instructor</a>
+                        <a class="nav-link text-white" href="register.html">Student Registration</a>
+                        <a class="nav-link text-white" href="login.html">Founder Login</a>
+                        <a class="nav-link text-white" href="attendance.html">Attendance</a>
+                        <a class="nav-link text-white" href="fees.html">Fees Payment</a>
+                        <a class="nav-link text-white" href="map.html">Map Location</a>
+                        <a href="contact.html" class="btn btn-gold px-4 py-2 ms-lg-2">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="row g-4 align-items-stretch">
+
+            <div class="col-12 col-md-6 text-center">
+                <div class="payment-card p-4 p-sm-5 h-100 rounded-3 shadow-lg d-flex flex-column justify-content-center border-top border-4" style="border-top-color: #5f259f !important;">
+                    <h1 class="accent-title text-uppercase mb-2 fw-semibold" style="color: #a384c7;">UPI Payments</h1>
+                    <h2 class="panel-heading h3 mb-4 fw-normal">PhonePe QR Gateway</h2>
+
+                    <div class="qr-scanner-frame shadow-md">
+                        <img src="phonepe-scanner.jpg.jpeg" alt="PhonePe QR Code" onerror="this.parentElement.innerHTML='<div class=\'py-5 text-dark\'><p class=\'mb-0 fw-bold\'>⚠️ Image Not Loading</p><p class=\'small text-muted mt-2\'>Ensure the file is named exactly:<br><code class=\'text-danger\'>phonepe-scanner.jpg.jpeg</code></p></div>'">
+                    </div>
+
+                    <p class="instruction-text small text-muted mt-3 mb-0">
+                        Scan via PhonePe, Google Pay, BHIM, or Paytm to initiate a tuition deposit.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="payment-card p-4 p-sm-5 h-100 rounded-3 shadow-lg d-flex flex-column justify-content-center">
+                    <h1 class="accent-title text-uppercase mb-2 fw-semibold">Tuition Validation</h1>
+                    <h2 class="panel-heading h3 mb-4 fw-normal">Update Account Ledger</h2>
+
+                    <p class="instruction-text mb-4 fw-light">
+                        Once your UPI transfer goes through, submit your registered name below to automatically update your payment status.
+                    </p>
+
+                    <div class="mb-4">
+                        <label for="studentName" class="form-label text-uppercase mb-2">Student Name</label>
+                        <input type="text" id="studentName" class="form-control" placeholder="Enter student's exact registered name">
+                    </div>
+
+                    <button onclick="updateFeesStatus()" class="btn btn-gold w-100 text-uppercase py-3 fw-bold">Clear Balance Status</button>
+
+                    <div id="paymentMessage" class="text-center mt-4 small" style="min-height: 24px;"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function updateFeesStatus() {
+            const name = document.getElementById("studentName").value.trim();
+            const statusBox = document.getElementById("paymentMessage");
+
+            if (name === "") {
+                statusBox.className = "text-warning fw-semibold";
+                statusBox.innerHTML = "⚠ Please specify the student's name.";
+                return;
+            }
+
+            statusBox.className = "text-info fw-semibold";
+            statusBox.innerHTML = "⏳ Searching student ledger record...";
+
+            // Accessing database path setup inside register.html components
+            db.ref("students/" + name).once("value", function(snapshot) {
+                if (snapshot.exists()) {
+                    db.ref("students/" + name).update({
+                        fees: "Paid"
+                    }, function(error) {
+                        if (error) {
+                            statusBox.className = "text-danger fw-semibold";
+                            statusBox.innerHTML = "✕ Connection failed. Changes not submitted.";
+                        } else {
+                            statusBox.className = "text-success fw-semibold fs-6";
+                            statusBox.innerHTML = "✓ Payment Authenticated! Status changed to 'Paid'.";
+                            document.getElementById("studentName").value = "";
+                        }
+                    });
+                } else {
+                    statusBox.className = "text-danger fw-semibold";
+                    statusBox.innerHTML = "✕ Student record not found. Please verify spelling.";
+                }
+            });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Dashboard - Dangerous Dance Floor</title>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase.js"></script>
+
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Base branding styles matching your administrative theme layout */
+        
+        body {
+            background-color: #f4f7f6 !important;
+            color: #333333 !important;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+        /* Dark Premium Navbar styling for brand consistency across portals */
+        
+        .navbar-custom {
+            background-color: #0d0d0d;
+        }
+        
+        .text-gold {
+            color: gold !important;
+        }
+        
+        .btn-gold {
+            background-color: gold;
+            color: #000000;
+            font-weight: bold;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        /* Premium Table Design Overrides */
+        
+        .dashboard-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .table thead th {
+            background-color: #34495e;
+            color: #ffffff;
+            font-size: 0.85rem;
+            letter-spacing: 0.1rem;
+            padding: 15px 20px;
+        }
+        
+        .table tbody td {
+            padding: 15px 20px;
+            vertical-align: middle;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BOOTSTRAP NAVBAR (Synchronized navigation system layered on top) -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom border-bottom border-secondary border-opacity-25 pb-4 mb-5 shadow-sm">
+        <div class="container py-2">
+            <!-- Brand Identity Typography -->
+            <a class="navbar-brand text-uppercase fw-light fs-4 text-start m-0 text-white" href="#" style="letter-spacing: 2px;">
+                Dangerous
+                <span class="d-block text-gold fs-6" style="font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 1px;">DANCE FLOOR</span>
+            </a>
+
+            <!-- Mobile Collapse Toggle Button -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="navbar-nav align-items-center gap-2 gap-lg-3 my-3 my-lg-0" style="font-family: Arial, sans-serif; font-size: 14px;">
+                    <a class="nav-link text-white" href="index.html">Home</a>
+                    <a class="nav-link text-white" href="about.html">About Us</a>
+                    <a class="nav-link text-white" href="founder.html">Founder</a>
+                    <a class="nav-link text-white" href="instructor.html">Instructor</a>
+                    <a class="nav-link text-white" href="register.html">Student Registration</a>
+                    <a class="nav-link text-white" href="login.html">Founder Login</a>
+                    <a class="nav-link text-white" href="attendance.html">Attendance</a>
+                    <a class="nav-link text-white" href="fees.html">Fees Payment</a>
+                    <a class="nav-link text-white" href="map.html">Map Location</a>
+                    <a href="contact.html" class="btn btn-gold px-4 py-2 ms-lg-2">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN DASHBOARD LAYOUT WINDOW -->
+    <div class="container pb-5" style="max-width: 1000px;">
+
+        <!-- HEADER HEADING Area -->
+        <div class="mb-4">
+            <h1 class="h2 fw-semibold mb-2" style="color: #2c3e50;">Founder Dashboard</h1>
+            <p class="text-secondary small mb-0">Live visual stream monitoring active student registration, attendance status, and financial profiles.</p>
+        </div>
+
+        <!-- RESPONSIVE DATA TABLE ELEMENT CONTAINER -->
+        <div class="dashboard-container overflow-hidden">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mb-0">
+                    <thead>
+                        <tr class="text-uppercase">
+                            <th scope="col">Student Name</th>
+                            <th scope="col">Attendance</th>
+                            <th scope="col">Fees</th>
+                            <th scope="col">Parent Number</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableData">
+                        <!-- Dynamic Firebase elements load directly here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Firebase Stream Rendering Interface Context Script -->
+    <script>
+        // Firebase Realtime Database Listener mapping data into structured row grids
+        db.ref("students").on("value", function(snapshot) {
+            let rows = "";
+            snapshot.forEach(function(childSnapshot) {
+                let data = childSnapshot.val();
+                rows += `
+                <tr>
+                    <td><strong>${data.studentName || ''}</strong></td>
+                    <td>${data.attendance || ''}</td>
+                    <td>${data.fees || ''}</td>
+                    <td>${data.parentNumber || ''}</td>
+                </tr>
+                `;
+            });
+            document.getElementById("tableData").innerHTML = rows;
+        });
+    </script>
+
+    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

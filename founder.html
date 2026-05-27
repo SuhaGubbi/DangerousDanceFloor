@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Founder - Dangerous Dance Floor</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Base branding styles matching the application ecosystem */
+        
+        body {
+            background-color: #0d0d0d !important;
+            color: #ffffff !important;
+            font-family: 'Times New Roman', Times, serif;
+            min-height: 100vh;
+        }
+        
+        .text-gold {
+            color: gold !important;
+        }
+        
+        .btn-gold {
+            background-color: gold;
+            color: #000000;
+            font-weight: bold;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        /* Founder Profile Card Section */
+        
+        .founder-card {
+            background-color: #1a1512;
+            /* Deep dark brown tint variant */
+            border: 1px solid #3d3025;
+            overflow: hidden;
+        }
+        /* Frame holding the founder portrait */
+        
+        .image-frame {
+            border: 2px solid #3d3025;
+            background-color: #0d0d0d;
+            padding: 12px;
+            max-width: 420px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .image-frame img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        /* Subtle luxury profile interaction zoom */
+        
+        .image-frame:hover img {
+            transform: scale(1.04);
+        }
+        
+        .accent-title {
+            color: #c4b5a7;
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+        
+        .founder-name {
+            font-family: 'Georgia', serif;
+            color: #ffffff;
+        }
+        
+        .founder-bio {
+            color: #e3deda;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .quote-box {
+            font-style: italic;
+            border-left: 3px solid gold;
+            color: #f5f2ef;
+            font-family: 'Georgia', serif;
+            background-color: #261e17;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-4" style="max-width: 1200px;">
+
+        <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-secondary border-opacity-25 pb-4 mb-5">
+            <div class="container-fluid p-0">
+                <a class="navbar-brand text-uppercase fw-light fs-4 text-start m-0 text-white" href="#" style="letter-spacing: 2px;">
+                    Dangerous
+                    <span class="d-block text-gold fs-6" style="font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 1px;">DANCE FLOOR</span>
+                </a>
+
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <div class="navbar-nav align-items-center gap-2 gap-lg-3 my-3 my-lg-0" style="font-family: Arial, sans-serif; font-size: 14px;">
+                        <a class="nav-link text-white" href="index.html">Home</a>
+                        <a class="nav-link text-white" href="about.html">About Us</a>
+                        <a class="nav-link text-white" href="founder.html">Founder</a>
+                        <a class="nav-link text-white" href="instructor.html">Instructor</a>
+                        <a class="nav-link text-white" href="register.html">Student Registration</a>
+                        <a class="nav-link text-white" href="login.html">Founder Login</a>
+                        <a class="nav-link text-white" href="attendance.html">Attendance</a>
+                        <a class="nav-link text-white" href="fees.html">Fees Payment</a>
+                        <a class="nav-link text-white" href="map.html">Map Location</a>
+                        <a href="contact.html" class="btn btn-gold px-4 py-2 ms-lg-2">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="founder-card rounded-3 shadow-lg p-4 p-sm-5 my-4">
+            <div class="row g-5 align-items-center">
+
+                <div class="col-12 col-lg-5 text-center">
+                    <div class="image-frame rounded-2 shadow-md">
+                        <img src="founder-pic.jpg.jpeg" alt="Founder of Dangerous Dance Floor" onerror="this.parentElement.innerHTML='<div class=\'py-5 text-muted\'><p class=\'mb-0\'>⚠️ Picture Loading Error</p><small>Check name is: founder-pic.jpg.jpeg</small></div>'">
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7">
+                    <h1 class="accent-title text-uppercase mb-2 fw-semibold">The Visionary Behind The Floor</h1>
+                    <h2 class="founder-name display-5 mb-4 fw-normal border-bottom border-white border-opacity-10 pb-3">Babu A</h2>
+
+                    <p class="founder-bio mb-4 fw-light">
+                        Welcome to Dangerous Dance Floor. Our academy was built on a foundation of passion, relentless artistic expression, and technical discipline. Our mission is to carve out a space where aspiring dancers can transform their kinetic energy into professional,
+                        high-impact performance art.
+                    </p>
+
+                    <p class="founder-bio mb-4 fw-light">
+                        Whether you are here to master the core fundamentals of rhythmic technique or to push boundaries through creative freestyle production, we provide the structured training ecosystem to help you achieve your goals.
+                    </p>
+
+                    <div class="quote-box p-4 rounded-end my-4">
+                        <p class="mb-0 fs-5 fw-light lh-base">
+                            "Dance isn't just about moving your feet—it's about commanding the room with confidence, precision, and unapologetic power."
+                        </p>
+                    </div>
+
+                    <div class="mt-4 pt-2">
+                        <a href="register.html" class="btn btn-gold px-5 py-3 text-uppercase tracking-wider fw-bold">Begin Your Training</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

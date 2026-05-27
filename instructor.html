@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor - Dangerous Dance Floor</title>
+
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Base branding styles matching the application ecosystem */
+        
+        body {
+            background-color: #0d0d0d !important;
+            color: #ffffff !important;
+            font-family: 'Times New Roman', Times, serif;
+            min-height: 100vh;
+        }
+        
+        .text-gold {
+            color: gold !important;
+        }
+        
+        .btn-gold {
+            background-color: gold;
+            color: #000000;
+            font-weight: bold;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        /* Split-screen container structural card elements */
+        
+        .instructor-card {
+            background-color: #ffffff;
+            border: 1px solid #222222;
+            overflow: hidden;
+        }
+        
+        .image-section {
+            background-color: #1a1a1a;
+            min-height: 450px;
+        }
+        
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Dark premium professional layout theme from original design */
+        
+        .content-section {
+            background-color: #3d3025;
+            color: #ffffff;
+        }
+        
+        .accent-title {
+            color: #c4b5a7;
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+        
+        .instructor-name {
+            font-family: 'Georgia', serif;
+            color: #ffffff;
+        }
+        
+        .bio-text {
+            color: #e3deda;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        /* Custom decorative star list icons */
+        
+        .dance-styles-list li {
+            font-family: 'Segoe UI', sans-serif;
+            color: #f5f2ef;
+            font-size: 1rem;
+            list-style: none;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .dance-styles-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #c4b5a7;
+            font-size: 0.8rem;
+        }
+        /* Philosophy custom blockquote indicator */
+        
+        .philosophy-quote {
+            font-style: italic;
+            border-left: 3px solid #c4b5a7;
+            color: #f5f2ef;
+            font-family: 'Georgia', serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- GLOBAL CONTAINER FRAME -->
+    <div class="container py-4" style="max-width: 1200px;">
+
+        <!-- GLOBAL NAVIGATION NAVBAR COMPONENT -->
+        <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-secondary border-opacity-25 pb-4 mb-5">
+            <div class="container-fluid p-0">
+                <!-- Brand Identity Header -->
+                <a class="navbar-brand text-uppercase fw-light fs-4 text-start m-0 text-white" href="#" style="letter-spacing: 2px;">
+                    Dangerous
+                    <span class="d-block text-gold fs-6" style="font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 1px;">DANCE FLOOR</span>
+                </a>
+
+                <!-- Navbar Responsive Mobile Bar Trigger -->
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navigation Route Links Wrapper -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <div class="navbar-nav align-items-center gap-2 gap-lg-3 my-3 my-lg-0" style="font-family: Arial, sans-serif; font-size: 14px;">
+                        <a class="nav-link text-white" href="index.html">Home</a>
+                        <a class="nav-link text-white" href="about.html">About Us</a>
+                        <a class="nav-link text-white" href="founder.html">Founder</a>
+                        <a class="nav-link text-white" href="instructor.html">Instructor</a>
+                        <a class="nav-link text-white" href="register.html">Student Registration</a>
+                        <a class="nav-link text-white" href="login.html">Founder Login</a>
+                        <a class="nav-link text-white" href="attendance.html">Attendance</a>
+                        <a class="nav-link text-white" href="fees.html">Fees Payment</a>
+                        <a class="nav-link text-white" href="map.html">Map Location</a>
+                        <a href="contact.html" class="btn btn-gold px-4 py-2 ms-lg-2">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- SPLIT-SCREEN LAYOUT MODULE -->
+        <div class="instructor-card rounded-2 shadow-lg my-4">
+            <div class="row g-0">
+
+                <!-- Media Display Panel Column -->
+                <div class="col-12 col-md-6 image-section d-flex align-items-stretch">
+                    <img src="instructor.jpg" alt="Dance Instructor of Dangerous Dance Floor" class="img-fluid">
+                </div>
+
+                <!-- Text Presentation Content Column -->
+                <div class="col-12 col-md-6 content-section p-4 p-sm-5 d-flex flex-column justify-content-center">
+
+                    <h1 class="accent-title text-uppercase mb-2 fw-semibold">Dance Instructor</h1>
+                    <h2 class="instructor-name display-5 mb-4 pb-3 border-bottom border-white border-opacity-10 fw-normal">Instructor Name</h2>
+
+                    <p class="bio-text mb-4 fw-light">
+                        Professional dance instructor specialized in delivering high-energy training, core technique development, and performance confidence across multiple disciplines:
+                    </p>
+
+                    <!-- Multi-Column Grid System for Disciplines -->
+                    <ul class="dance-styles-list row row-cols-1 row-cols-sm-2 g-3 p-0 mb-4 ms-0 me-0">
+                        <div class="col">
+                            <li>Hip Hop</li>
+                        </div>
+                        <div class="col">
+                            <li>Freestyle</li>
+                        </div>
+                        <div class="col">
+                            <li>Western</li>
+                        </div>
+                        <div class="col">
+                            <li>Contemporary</li>
+                        </div>
+                    </ul>
+
+                    <!-- Philosophy High-contrast Focus Accent Block -->
+                    <p class="philosophy-quote ps-3 py-1 mb-0 fs-5 fw-light">
+                        "Teaching students with energy, creativity, and discipline."
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap 5 JavaScript Bundle Bundle Option -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
